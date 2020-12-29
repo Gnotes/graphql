@@ -43,3 +43,4 @@ Now, change the url of route to "http://localhost:3004/users", you will see all 
 #### Tags
 
 - [V1.0.0](https://github.com/Gnotes/graphql/releases/tag/V1.0.0) : users demo with hard code of users
+- [V1.0.1](https://github.com/Gnotes/graphql/releases/tag/V1.0.1) : add json-server to provide some data
