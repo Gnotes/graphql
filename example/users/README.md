@@ -2,6 +2,8 @@
 
 #### Steps
 
+Checkout to Tag V1.0.0
+
 - Install all dependencies
 
   ```bash
@@ -25,6 +27,18 @@
     }
   }
   ```
+
+#### Run JSON Server
+
+Checkout to Tag V1.0.1 and run the command.
+
+```bash
+npm run json:server
+```
+
+And then the "json-server" will provide a json based server with port "3004" on "http://localhost:3004", (the default server port is 3000)
+
+Now, change the url of route to "http://localhost:3004/users", you will see all the users who you are defined in 'db.json'
 
 #### Tags
 
