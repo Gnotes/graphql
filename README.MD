@@ -2,6 +2,12 @@
 
 > [GraphQL](https://graphql.cn/) 既是一种用于 API 的查询语言也是一个满足你数据查询的运行时.
 
+### CORES
+
+#### Keywords
+
+- [keyword](./docs/*.md)
+
 ### References
 
 - [GraphQL](https://graphql.cn/) 📚
