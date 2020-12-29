@@ -25,3 +25,7 @@
     }
   }
   ```
+
+#### Tags
+
+- [V1.0.0](https://github.com/Gnotes/graphql/releases/tag/V1.0.0) : users demo with hard code of users
