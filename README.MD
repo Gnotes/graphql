@@ -6,7 +6,9 @@
 
 #### Keywords
 
-- [keyword](./docs/*.md)
+- [query | 查询](./docs/query.md)：
+- [mutation | 变更](./docs/mutation.md)
+- [fragment | 片段](./docs/fragment.md)
 
 ### References
 

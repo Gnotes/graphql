@@ -37,6 +37,12 @@ const UserType = new GraphQLObjectType({
     firstName: { type: GraphQLString },
     lastName: { type: GraphQLString },
     age: { type: GraphQLInt },
+    /**
+     * 注意：这个地方定义的是 company ,而不是 companyId
+     * 当 Graphql 的数据类型定义 Data-Type （就是我们定义的这个），与真实的数据模型 Data-Model（db.json 或者数据库中的）的
+     * “字段一致” ：时就会读取model中定义的值，
+     * “字段不一致”：时就需要通过 "resolve" 函数指定需要返回的数据
+     */
     company: {
       type: CompanyType,
       resolve(parentValue, args) {
