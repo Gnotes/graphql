@@ -46,6 +46,32 @@ Tag V1.0.2
 
 Use "nodemon" to watch changes of server.js and "axios" to fetch data served by json-server
 
+```graphql
+{
+  users{
+    id
+    firstName
+    age
+    company {
+      name
+    }
+  }
+}
+
+// or
+
+{
+  company(id: "1") {
+    id
+    name
+    users {
+      id
+      firstName
+    }
+  }
+}
+```
+
 #### Tags
 
 - [V1.0.0](https://github.com/Gnotes/graphql/releases/tag/V1.0.0) : users demo with hard code of users

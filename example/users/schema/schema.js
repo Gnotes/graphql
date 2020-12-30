@@ -21,8 +21,8 @@ const CompanyType = new GraphQLObjectType({
     users: {
       type: new GraphQLList(UserType),
       resolve(parentValue, args) {
-        return axios.get(`/users?companyId=${parentValue.id}`);
-        // return axios.get(`/companies/${parentValue.id}/users`);
+        // return axios.get(`/users?companyId=${parentValue.id}`);
+        return axios.get(`/companies/${parentValue.id}/users`);
       }
     }
   })
