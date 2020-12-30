@@ -72,8 +72,26 @@ Use "nodemon" to watch changes of server.js and "axios" to fetch data served by 
 }
 ```
 
+### Mutation & Query
+
+Tag V1.0.3
+
+There are two “Special” types of GraphQL named **Query** and **Mutation**，  
+Query means to get data from datastore without any changes. And Mutation is on the opposite side (create & update & delete).
+
+```graphql
+mutation {
+  addUser(fristName: "YOUR_NAME", age: 30) {
+    id
+  }
+}
+```
+
+the previous graphql will call mutation "addUser" with two parameters "firstName" and "age"，returning the new user object which contains a field "id".
+
 #### Tags
 
 - [V1.0.0](https://github.com/Gnotes/graphql/releases/tag/V1.0.0) : users demo with hard code of users
 - [V1.0.1](https://github.com/Gnotes/graphql/releases/tag/V1.0.1) : add json-server to provide some data
 - [V1.0.2](https://github.com/Gnotes/graphql/releases/tag/V1.0.2) : Use nodemon & axios
+- [V1.0.3](https://github.com/Gnotes/graphql/releases/tag/V1.0.3) : mutation & query

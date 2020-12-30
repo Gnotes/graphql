@@ -10,7 +10,8 @@ const {
   GraphQLObjectType,
   GraphQLString,
   GraphQLInt,
-  GraphQLList
+  GraphQLList,
+  GraphQLNonNull
 } = graphql;
 
 const CompanyType = new GraphQLObjectType({
@@ -86,8 +87,50 @@ const RootQueryType = new GraphQLObjectType({
   }
 });
 
+// Mutation 的入口类型
+const RootMutationType = new GraphQLObjectType({
+  name: "RootMutation",
+  fields: {
+    // 变更的名称，类似上边Query 中的 user、users等
+    addUser: {
+      type: UserType,
+      args: {
+        firstName: { type: new GraphQLNonNull(GraphQLString) },
+        lastName: { type: new GraphQLNonNull(GraphQLString) },
+        age: { type: GraphQLInt },
+        companyId: { type: GraphQLString }
+      },
+      // 具体的执行函数，第二个是传递的参数对象
+      resolve(parentValue, { firstName, lastName, age, companyId }) {
+        return axios.post("/users", { firstName, lastName, age, companyId });
+      }
+    },
+    updateUser: {
+      type: UserType,
+      args: {
+        id: { type: new GraphQLNonNull(GraphQLString) },
+        firstName: { type: GraphQLString },
+        lastName: { type: GraphQLString },
+        age: { type: GraphQLInt },
+        companyId: { type: GraphQLString }
+      },
+      resolve(parentValue, { id, ...others }) {
+        return axios.put(`/users/${id}`, others);
+      }
+    },
+    deleteUser: {
+      type: UserType,
+      args: { id: { type: new GraphQLNonNull(GraphQLString) } },
+      resolve(parentValue, { id }) {
+        return axios.delete(`/users/${id}`);
+      }
+    }
+  }
+});
+
 const schema = new GraphQLSchema({
-  query: RootQueryType
+  query: RootQueryType,
+  mutation: RootMutationType
 });
 
 module.exports = schema;
