@@ -1,13 +1,32 @@
 const graphql = require("graphql");
 const _ = require("lodash");
-const { GraphQLSchema, GraphQLObjectType, GraphQLString, GraphQLInt } = graphql;
+const axios = require("axios");
 
-const users = [
-  { id: "1", firstName: "John", lastName: "Doe", age: 12 },
-  { id: "2", firstName: "Jack", lastName: "Doe", age: 12 },
-  { id: "3", firstName: "Bill", lastName: "Doe", age: 12 },
-  { id: "4", firstName: "Mac", lastName: "Doe", age: 12 }
-];
+axios.defaults.baseURL = "http://localhost:3004";
+axios.interceptors.response.use(res => res.data);
+
+const {
+  GraphQLSchema,
+  GraphQLObjectType,
+  GraphQLString,
+  GraphQLInt,
+  GraphQLList
+} = graphql;
+
+const CompanyType = new GraphQLObjectType({
+  name: "Company",
+  fields: () => ({
+    id: { type: GraphQLString },
+    name: { type: GraphQLString },
+    users: {
+      type: new GraphQLList(UserType),
+      resolve(parentValue, args) {
+        return axios.get(`/users?companyId=${parentValue.id}`);
+        // return axios.get(`/companies/${parentValue.id}/users`);
+      }
+    }
+  })
+});
 
 const UserType = new GraphQLObjectType({
   // 类型名称
@@ -17,7 +36,13 @@ const UserType = new GraphQLObjectType({
     id: { type: GraphQLString }, // 字段类型
     firstName: { type: GraphQLString },
     lastName: { type: GraphQLString },
-    age: { type: GraphQLInt }
+    age: { type: GraphQLInt },
+    company: {
+      type: CompanyType,
+      resolve(parentValue, args) {
+        return axios.get(`/companies/${parentValue.companyId}`);
+      }
+    }
   }
 });
 
@@ -30,7 +55,26 @@ const RootQueryType = new GraphQLObjectType({
       args: { id: { type: GraphQLString } },
       resolve: (parentValue, args) => {
         console.log(parentValue, args);
-        return _.find(users, { id: args.id });
+        return axios.get(`/users/${args.id}`);
+      }
+    },
+    users: {
+      type: new GraphQLList(UserType),
+      resolve() {
+        return axios.get(`/users`);
+      }
+    },
+    company: {
+      type: CompanyType,
+      args: { id: { type: GraphQLString } },
+      resolve: (parentValue, args) => {
+        return axios.get(`/companies/${args.id}`);
+      }
+    },
+    companies: {
+      type: new GraphQLList(CompanyType),
+      resolve() {
+        return axios.get(`/companies`);
       }
     }
   }

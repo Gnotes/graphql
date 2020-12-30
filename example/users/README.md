@@ -40,7 +40,14 @@ And then the "json-server" will provide a json based server with port "3004" on 
 
 Now, change the url of route to "http://localhost:3004/users", you will see all the users who you are defined in 'db.json'
 
+#### Use nodemon & axios
+
+Tag V1.0.2
+
+Use "nodemon" to watch changes of server.js and "axios" to fetch data served by json-server
+
 #### Tags
 
 - [V1.0.0](https://github.com/Gnotes/graphql/releases/tag/V1.0.0) : users demo with hard code of users
 - [V1.0.1](https://github.com/Gnotes/graphql/releases/tag/V1.0.1) : add json-server to provide some data
+- [V1.0.2](https://github.com/Gnotes/graphql/releases/tag/V1.0.2) : Use nodemon & axios
