@@ -1,0 +1,53 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.layout {
+  padding: 16px;
+  margin: 0 auto;
+}
+
+.table {
+  width: 100%;
+  text-align: center;
+  border: 1px dashed #eee;
+  thead {
+    background-color: #9dc2e0;
+    color: #fff;
+  }
+  th,
+  td {
+    padding: 8px;
+  }
+  tbody tr {
+    &:hover {
+      background-color: #f5f7f9;
+    }
+  }
+}
+
+.button-group {
+  margin: 8px 0;
+  &.align-right {
+    text-align: right;
+  }
+}
+.button {
+  display: inline-block;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  min-width: 120px;
+  text-align: center;
+}
+.button-delete {
+  font-size: 12px;
+  cursor: pointer;
+  color: #9dc2e0;
+  &:hover {
+    font-weight: bold;
+  }
+}
