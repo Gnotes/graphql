@@ -47,6 +47,7 @@ const UserType = new GraphQLObjectType({
     company: {
       type: CompanyType,
       resolve(parentValue, args) {
+        if (!parentValue.companyId) return null;
         return axios.get(`/companies/${parentValue.companyId}`);
       }
     }
