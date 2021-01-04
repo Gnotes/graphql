@@ -6,9 +6,9 @@
 
 #### Keywords
 
-- [query | 查询](./docs/query.md)：
-- [mutation | 变更](./docs/mutation.md)
-- [fragment | 片段](./docs/fragment.md)
+- [query | 查询](https://graphql.cn/learn/queries)
+- [mutation | 变更](https://graphql.cn/learn/queries/#mutations)
+- [Schema | 类型定义](https://graphql.cn/learn/schema/)
 
 ### References
 
